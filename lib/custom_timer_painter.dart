@@ -1,20 +1,22 @@
-import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
+import 'package:flutter/material.dart';
+
 class CustomTimerPainter extends CustomPainter {
-  CustomTimerPainter({
-    this.animation,
-    this.fillColor,
-    this.fillGradient,
-    this.ringColor,
-    this.ringGradient,
-    this.strokeWidth,
-    this.strokeCap,
-    this.backgroundColor,
-    this.isReverse,
-    this.isReverseAnimation,
-    this.backgroundGradient,
-  }) : super(repaint: animation);
+  CustomTimerPainter(
+      {this.animation,
+      this.fillColor,
+      this.fillGradient,
+      this.ringColor,
+      this.ringGradient,
+      this.strokeWidth,
+      this.strokeCap,
+      this.backgroundColor,
+      this.isReverse,
+      this.isReverseAnimation,
+      this.backgroundGradient,
+      this.trackColor})
+      : super(repaint: animation);
 
   final Animation<double>? animation;
   final Color? fillColor, ringColor, backgroundColor;
@@ -22,6 +24,7 @@ class CustomTimerPainter extends CustomPainter {
   final StrokeCap? strokeCap;
   final bool? isReverse, isReverseAnimation;
   final Gradient? fillGradient, ringGradient, backgroundGradient;
+  final Color? trackColor;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -39,7 +42,8 @@ class CustomTimerPainter extends CustomPainter {
       paint.shader = null;
     }
 
-    canvas.drawCircle(size.center(Offset.zero), size.width / 2, paint);
+    canvas.drawCircle(
+        size.center(Offset.zero), size.width / 2, paint..color = trackColor!);
     double progress = (animation!.value) * 2 * math.pi;
     double startAngle = math.pi * 1.5;
 

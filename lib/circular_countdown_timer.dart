@@ -18,6 +18,9 @@ class CircularCountDownTimer extends StatefulWidget {
   /// Ring Color for Countdown Widget.
   final Color ringColor;
 
+  /// Track Color for Countdown Widget.
+  final Color trackColor;
+
   /// Ring Gradient for Countdown Widget.
   final Gradient? ringGradient;
 
@@ -78,11 +81,11 @@ class CircularCountDownTimer extends StatefulWidget {
   /// Handles the timer start.
   final bool autoStart;
 
-  /* 
+  /*
    * Function to format the text.
    * Allows you to format the current duration to any String.
    * It also provides the default function in case you want to format specific moments
-     as in reverse when reaching '0' show 'GO', and for the rest of the instances follow 
+     as in reverse when reaching '0' show 'GO', and for the rest of the instances follow
      the default behavior.
   */
   final Function(Function(Duration duration) defaultFormatterFunction,
@@ -94,6 +97,7 @@ class CircularCountDownTimer extends StatefulWidget {
     required this.duration,
     required this.fillColor,
     required this.ringColor,
+    required this.trackColor,
     this.timeFormatterFunction,
     this.backgroundColor,
     this.fillGradient,
@@ -290,6 +294,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                     Positioned.fill(
                       child: CustomPaint(
                         painter: CustomTimerPainter(
+                            trackColor: widget.trackColor,
                             animation: _countDownAnimation ?? _controller,
                             fillColor: widget.fillColor,
                             fillGradient: widget.fillGradient,

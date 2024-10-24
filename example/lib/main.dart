@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
 
@@ -29,12 +29,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final int _duration = 10;
+  final int _duration = 15;
   final CountDownController _controller = CountDownController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(widget.title!),
       ),
@@ -50,25 +51,26 @@ class _MyHomePageState extends State<MyHomePage> {
           controller: _controller,
 
           // Width of the Countdown Widget.
-          width: MediaQuery.of(context).size.width / 2,
+          width: 300,
 
           // Height of the Countdown Widget.
-          height: MediaQuery.of(context).size.height / 2,
+          height: 300,
 
           // Ring Color for Countdown Widget.
-          ringColor: Colors.grey[300]!,
+          ringColor: Colors.white,
 
           // Ring Gradient for Countdown Widget.
           ringGradient: null,
 
           // Filling Color for Countdown Widget.
-          fillColor: Colors.purpleAccent[100]!,
+          fillColor: Color(0xff9957F6),
+          trackColor: Color(0xffEBDDFF),
 
           // Filling Gradient for Countdown Widget.
           fillGradient: null,
 
           // Background Color for Countdown Widget.
-          backgroundColor: Colors.purple[500],
+          backgroundColor: Colors.white,
 
           // Background Gradient for Countdown Widget.
           backgroundGradient: null,
@@ -77,23 +79,23 @@ class _MyHomePageState extends State<MyHomePage> {
           strokeWidth: 20.0,
 
           // Begin and end contours with a flat edge and no extension.
-          strokeCap: StrokeCap.round,
+          strokeCap: StrokeCap.square,
 
           // Text Style for Countdown Text.
           textStyle: const TextStyle(
             fontSize: 33.0,
-            color: Colors.white,
             fontWeight: FontWeight.bold,
+            letterSpacing: 3.0,
           ),
 
           // Format for the Countdown Text.
-          textFormat: CountdownTextFormat.S,
+          textFormat: CountdownTextFormat.MM_SS,
 
           // Handles Countdown Timer (true for Reverse Countdown (max to 0), false for Forward Countdown (0 to max)).
-          isReverse: false,
+          isReverse: true,
 
           // Handles Animation Direction (true for Reverse Animation, false for Forward Animation).
-          isReverseAnimation: false,
+          isReverseAnimation: true,
 
           // Handles visibility of the Countdown Text.
           isTimerTextShown: true,
